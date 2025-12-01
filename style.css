@@ -1,20 +1,158 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@layer global, component, utility;
+
+@layer global {
+  /* Source Sans 3 italic latin */
+  @font-face {
+    font-family: 'Source Sans 3';
+    font-style: italic;
+    font-weight: 200 900;
+    font-display: swap;
+    src: url(/fonts/nwpMtKy2OAdR1K-IwhWudF-R3woqZ-LYxnV18A.woff2)
+      format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
+      U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+      U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  /* Source Sans 3 variable latin */
+  @font-face {
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 200 900;
+    font-display: swap;
+    src: url(/fonts/nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5Hc.woff2)
+      format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
+      U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+      U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  /* Fonts */
+  :root {
+    --fs-14: calc(14 / 16 * 1rem);
+    --fs-16: calc(16 / 16 * 1rem);
+    --fs-24: calc(24 / 16 * 1rem);
+    --fs-36: calc(36 / 16 * 1rem);
+    --fs-42: calc(42 / 16 * 1rem);
+    --fs-48: calc(48 / 16 * 1rem);
+    --fs-72: calc(72 / 16 * 1rem);
+
+    --font-size-topnav: var(--fs-14);
+    --font-size-h1: var(--fs-42);
+    --font-size-h2: var(--fs-36);
+    --font-size-h3: var(--fs-24);
+
+    @media (width >= calc(600 / 16 * 1rem)) {
+      --font-size-top-nav: var(--fs-16);
+      --font-size-h1: var(--fs-72);
+      --font-size-h2: var(--fs-48);
+    }
+  }
+
+  /* Colours */
+  :root {
+    --c-white: hsl(0, 0%, 100%);
+    --c-gray-dark: hsl(233, 14%, 25%);
+    --c-purple: hsl(232, 58%, 55%);
+    --c-teal: hsl(180, 100%, 42%);
+    --c-transparent: transparent;
+    --c-magenta: hsl(320, 85%, 41%);
+
+    --color-main-bg: var(--c-white);
+    --color-text-dark: var(--c-gray-dark);
+    --color-text-light: var(--c-white);
+    --color-hero-bg: var(--c-purple);
+    --color-button-primary-bg: var(--c-teal);
+    --color-button-primary-text: var(--c-gray-dark);
+    --color-button-secondary-bg: var(--c-transparent);
+    --color-button-secondary-border: var(--c-white);
+    --color-button-secondary-text: var(--c-white);
+    --color-fullwidth-bg: var(--c-magenta);
+
+    /* --max-content-width: calc(800 / 16 * 1rem);
+  --viewport-padding: calc(24 / 16 * 1rem); */
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Source Sans 3', Arial, Helvetica, sans-serif;
+    line-height: 1.3;
+    color: var(--color-text-dark);
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img,
+  picture,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  .wrapper {
+    width: min(calc(100% - 48px), calc(1200 / 16 * 1rem));
+    margin-inline: auto;
+  }
 }
 
-* {
-  margin: 0;
+@layer component {
 }
 
-a {
+/* Want these styles to override any other styles, hence they're last */
+@layer utility {
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+}
+
+.text-link {
+  color: red;
   text-decoration: none;
-}
 
-img,
-picture,
-svg {
-  display: block;
-  max-width: 100%;
+  .quote-content & {
+    color: green;
+    text-decoration: revert;
+  }
+
+  .london & {
+    color: brown;
+  }
 }
