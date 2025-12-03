@@ -43,7 +43,7 @@
     --font-size-h3: var(--fs-24);
 
     @media (width >= calc(600 / 16 * 1rem)) {
-      --font-size-top-nav: var(--fs-16);
+      --font-size-topnav: var(--fs-16);
       --font-size-h1: var(--fs-72);
       --font-size-h2: var(--fs-48);
     }
@@ -61,6 +61,7 @@
     --color-main-bg: var(--c-white);
     --color-text-dark: var(--c-gray-dark);
     --color-text-light: var(--c-white);
+    --color-header-bg: var(--c-purple);
     --color-hero-bg: var(--c-purple);
     --color-button-primary-bg: var(--c-teal);
     --color-button-primary-text: var(--c-gray-dark);
@@ -68,9 +69,6 @@
     --color-button-secondary-border: var(--c-white);
     --color-button-secondary-text: var(--c-white);
     --color-fullwidth-bg: var(--c-magenta);
-
-    /* --max-content-width: calc(800 / 16 * 1rem);
-  --viewport-padding: calc(24 / 16 * 1rem); */
   }
 
   *,
@@ -115,6 +113,7 @@
   picture,
   svg {
     display: block;
+    height: auto;
     max-width: 100%;
   }
 
@@ -125,6 +124,62 @@
 }
 
 @layer component {
+  .topnav {
+    background-color: var(--color-header-bg);
+
+    .topnav__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-block: 12px;
+
+      @media (width >= calc(600 / 16 * 1rem)) {
+        padding-block: 20px;
+      }
+    }
+
+    .topnav__homelink {
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .topnav__logo {
+      width: calc(70 / 16 * 1rem);
+
+      @media (width >= calc(600 / 16 * 1rem)) {
+        width: calc(128 / 16 * 1rem);
+      }
+    }
+
+    .topnav__links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+
+      @media (width >= calc(600 / 16 * 1rem)) {
+        gap: 40px;
+      }
+    }
+
+    .topnav__item {
+    }
+
+    .topnav__link {
+      text-transform: uppercase;
+      font-size: var(--font-size-topnav);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--color-text-light);
+
+      &:hover {
+        text-decoration: underline 2px;
+        text-underline-offset: 4px;
+      }
+    }
+  }
 }
 
 /* Want these styles to override any other styles, hence they're last */
@@ -140,6 +195,17 @@
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+
+    &.skip:focus {
+      width: auto;
+      height: auto;
+      margin: 0;
+      padding: 8px 16px;
+      background: white;
+      clip-path: none;
+      clip: auto;
+      overflow: visible;
+    }
   }
 }
 
