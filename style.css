@@ -354,6 +354,29 @@
       max-width: 40ch;
     }
   }
+
+  .fw-feature {
+    background-color: var(--color-fullwidth-bg);
+    color: var(--color-text-light);
+    text-align: center;
+
+    .fw-feature__wrapper {
+      display: grid;
+      justify-items: center;
+    }
+
+    .fw-feature__title {
+      margin-block-end: 20px;
+    }
+
+    .fw-feature__desc {
+      margin-block-end: 40px;
+    }
+
+    .fw-feature__image {
+      width: min(100%, calc(792 / 16 * 1rem));
+    }
+  }
 }
 
 /* Want these styles to override any other styles, hence they're last */
