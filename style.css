@@ -85,12 +85,16 @@
     --color-cta-gradient1: var(--c-gray-dark);
     --color-cta-gradient2: var(--c-purple);
     --color-cta-gradient3: var(--c-teal);
+    --color-footer-link-hover: var(--c-magenta);
   }
 
   /* Other stuff */
   :root {
     --cta-stop-two: 75%;
     --cta-stop-three: 150%;
+    /* https://codepen.io/sosuke/pen/Pjoqqp */
+    /* --filter-svg-magenta: invert(17%) sepia(64%) saturate(6506%)
+      hue-rotate(309deg) brightness(80%) contrast(95%); */
 
     @media (width >= calc(600 / 16 * 1rem)) {
       --cta-stop-two: 60%;
@@ -169,6 +173,12 @@
     display: block;
     height: auto;
     max-width: 100%;
+  }
+
+  header ul,
+  footer ul {
+    list-style-type: none;
+    padding: 0;
   }
 
   .wrapper {
@@ -260,9 +270,6 @@
     }
 
     .topnav__homelink {
-      &:hover {
-        opacity: 0.9;
-      }
     }
 
     .topnav__logo {
@@ -276,8 +283,6 @@
     .topnav__links {
       display: flex;
       gap: 20px;
-      list-style: none;
-      padding: 0;
 
       @media (width >= calc(600 / 16 * 1rem)) {
         gap: 40px;
@@ -479,6 +484,69 @@
       font-weight: 700;
     }
   }
+
+  .footer {
+    .footer__top-row {
+      display: grid;
+      gap: 10px;
+      margin-block-end: 40px;
+    }
+
+    .footer__homelink {
+      display: block;
+      width: fit-content;
+    }
+
+    .footer__logo {
+      width: calc(128 / 16 * 1rem);
+    }
+
+    .footer__main-nav-area {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 40px 20px;
+    }
+
+    .footer__nav-list {
+      display: grid;
+      gap: 6px;
+    }
+
+    .footer__nav-title {
+      font-size: calc(22 / 16 * 1rem);
+      font-weight: 700;
+      margin-block-end: 6px;
+    }
+
+    .footer__link {
+      color: inherit;
+      transition: color 150ms ease-in-out;
+
+      &:hover {
+        color: var(--color-footer-link-hover);
+
+        .footer__social-path {
+          fill: var(--color-footer-link-hover);
+        }
+      }
+
+      &.social {
+        display: inline-flex;
+        /* width: fit-content; */
+        gap: 16px;
+        align-items: center;
+      }
+    }
+
+    .footer__social-svg {
+      width: calc(18 / 16 * 1rem);
+    }
+
+    .footer__social-path {
+      fill: var(--color-text-dark);
+      transition: fill 150ms ease-in-out;
+    }
+  }
 }
 
 /* Want these styles to override any other styles, hence they're last */
@@ -506,9 +574,17 @@
       overflow: visible;
     }
   }
+
+  .hover-fade {
+    transition: opacity 150ms ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
-.temp {
+/* .temp {
   height: 50vh;
   background-color: palegoldenrod;
-}
+} */
