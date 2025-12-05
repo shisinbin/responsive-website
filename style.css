@@ -78,7 +78,24 @@
     --color-button-secondary-border: var(--c-white);
     --color-button-secondary-text: var(--c-white);
     --color-button-secondary-text-hover: var(--color-hero-bg);
+    --color-button-tertiary-bg: var(--c-white);
+    --color-button-tertiary-bg-hover: var(--c-teal);
+    --color-button-tertiary-text: var(--c-gray-dark);
     --color-fullwidth-bg: var(--c-magenta);
+    --color-cta-gradient1: var(--c-gray-dark);
+    --color-cta-gradient2: var(--c-purple);
+    --color-cta-gradient3: var(--c-teal);
+  }
+
+  /* Other stuff */
+  :root {
+    --cta-stop-two: 75%;
+    --cta-stop-three: 150%;
+
+    @media (width >= calc(600 / 16 * 1rem)) {
+      --cta-stop-two: 60%;
+      --cta-stop-three: 120%;
+    }
   }
 
   *,
@@ -163,6 +180,24 @@
       padding-block: 80px;
     }
   }
+
+  .fullwidth {
+    text-align: center;
+
+    .fullwidth__wrapper {
+      display: grid;
+      justify-items: center;
+    }
+
+    .fullwidth__title {
+      margin-block-end: 20px;
+    }
+
+    .fullwidth__description {
+      max-width: 80ch;
+      margin-block-end: 40px;
+    }
+  }
 }
 
 @layer component {
@@ -196,6 +231,15 @@
       &:hover {
         background-color: var(--color-button-secondary-bg-hover);
         color: var(--color-button-secondary-text-hover);
+      }
+    }
+
+    &.tertiary {
+      background-color: var(--color-button-tertiary-bg);
+      color: var(--color-button-tertiary-text);
+
+      &:hover {
+        background-color: var(--color-button-tertiary-bg-hover);
       }
     }
   }
@@ -360,20 +404,6 @@
   .fw-feature {
     background-color: var(--color-fullwidth-bg);
     color: var(--color-text-light);
-    text-align: center;
-
-    .fw-feature__wrapper {
-      display: grid;
-      justify-items: center;
-    }
-
-    .fw-feature__title {
-      margin-block-end: 20px;
-    }
-
-    .fw-feature__desc {
-      margin-block-end: 40px;
-    }
 
     .fw-feature__image {
       width: min(100%, calc(792 / 16 * 1rem));
@@ -433,6 +463,20 @@
       @media (width >= calc(600 / 16 * 1rem)) {
         text-align: left;
       }
+    }
+  }
+
+  .fw-cta {
+    background: linear-gradient(
+      to right,
+      var(--color-cta-gradient1) 0%,
+      var(--color-cta-gradient2) var(--cta-stop-two),
+      var(--color-cta-gradient3) var(--cta-stop-three)
+    );
+    color: var(--color-text-light);
+
+    .fw-cta__title {
+      font-weight: 700;
     }
   }
 }
