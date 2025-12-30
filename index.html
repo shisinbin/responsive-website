@@ -8,6 +8,11 @@
     />
     <title>Mythos</title>
     <link rel="stylesheet" href="/style.css" />
+    <script src="https://cdn.jsdelivr.net/gh/rick-liruixin/body-scroll-lock-upgrade@v1.1.0/lib/index.umd.js"></script>
+
+    <script src="https://unpkg.com/tabbable/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/focus-trap/dist/focus-trap.umd.js"></script>
+
     <script src="/script.js" defer></script>
     <link
       rel="icon"
@@ -30,6 +35,7 @@
     >
     <header class="topnav">
       <h2 class="visually-hidden">Header</h2>
+
       <div class="wrapper topnav__wrapper">
         <a href="/" class="topnav__homelink hover-fade">
           <img
@@ -42,17 +48,61 @@
         </a>
 
         <nav>
-          <ul class="topnav__links">
-            <li class="topnav__item">
-              <a href="/" class="topnav__link">Features</a>
-            </li>
-            <li class="topnav__item">
-              <a href="/" class="topnav__link">Pricing</a>
-            </li>
-            <li class="topnav__item">
-              <a href="/" class="topnav__link">About</a>
-            </li>
-          </ul>
+          <span id="nav-label" hidden>Navigation</span>
+          <span id="close-label" hidden>Close Navigation</span>
+
+          <div class="topnav__overlay"></div>
+
+          <button
+            id="btnOpen"
+            class="topnav__open"
+            aria-expanded="false"
+            aria-labelledby="nav-label"
+          >
+            <img
+              src="/img/hamburger.svg"
+              alt=""
+              width="30"
+              height="23"
+              class="topnav__open-icon"
+            />
+          </button>
+
+          <div
+            id="menuTopNav"
+            class="topnav__menu"
+            role="dialog"
+            aria-labelledby="nav-label"
+          >
+            <button
+              id="btnClose"
+              class="topnav__close"
+              aria-labelledby="close-label"
+            >
+              <img
+                src="/img/close-button.svg"
+                alt=""
+                width="25"
+                height="26"
+                class="topnav__close-icon"
+              />
+            </button>
+
+            <ul class="topnav__links">
+              <li class="topnav__item">
+                <a href="/" class="topnav__link">Home</a>
+              </li>
+              <li class="topnav__item">
+                <a href="/" class="topnav__link">Features</a>
+              </li>
+              <li class="topnav__item">
+                <a href="/" class="topnav__link">Pricing</a>
+              </li>
+              <li class="topnav__item">
+                <a href="/" class="topnav__link">About</a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </header>
@@ -207,7 +257,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <h2 class="visually-hidden">Footer</h2>
 
       <div class="wrapper">

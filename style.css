@@ -40,7 +40,7 @@
     --fs-48: calc(48 / 16 * 1rem);
     --fs-72: calc(72 / 16 * 1rem);
 
-    --font-size-topnav: var(--fs-14);
+    --font-size-topnav: var(--fs-20);
     /* --font-size-h1: var(--fs-42); */
     --font-size-h1: clamp(2.625rem, 1.5rem + 4.8vw, 4.5rem);
     --font-size-h2: var(--fs-36);
@@ -60,7 +60,9 @@
   :root {
     --c-white: hsl(0, 0%, 100%);
     --c-gray-dark: hsl(233, 14%, 25%);
+    --c-gray-dark-40: hsl(233, 14%, 25%, 40%);
     --c-purple: hsl(232, 58%, 55%);
+    --c-purple-dark-60: hsl(232, 58%, 35%, 60%);
     --c-teal: hsl(180, 100%, 42%);
     --c-teal-dark: hsl(180, 100%, 37%);
     --c-transparent: transparent;
@@ -71,6 +73,9 @@
     --color-text-dark: var(--c-gray-dark);
     --color-text-light: var(--c-white);
     --color-header-bg: var(--c-purple);
+    --color-topnav-menu-bg: var(--c-purple);
+    --color-topnav-menu-shadow: var(--c-purple-dark-60);
+    --color-topnav-menu-overlay: var(--c-gray-dark-40);
     --color-topnav-gradient-1: var(--c-teal);
     --color-topnav-gradient-2: var(--c-yellow);
     --color-hero-bg: var(--c-purple);
@@ -179,6 +184,16 @@
     max-width: 100%;
   }
 
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    border: none;
+    padding: 0;
+    background: none;
+  }
+
   header ul,
   footer ul {
     list-style-type: none;
@@ -279,6 +294,9 @@
   }
 
   .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background-color: var(--color-header-bg);
 
     .topnav__wrapper {
@@ -304,26 +322,110 @@
       }
     }
 
-    .topnav__links {
-      display: flex;
-      gap: 20px;
+    .topnav__overlay {
+      opacity: 0;
+      @media (width < calc(600 / 16 * 1rem)) {
+        position: fixed;
+        inset: 0;
+        background-color: var(--color-topnav-menu-overlay);
+        z-index: 1;
+        pointer-events: none;
+        transition: opacity 250ms ease-in-out;
 
-      @media (width >= calc(600 / 16 * 1rem)) {
-        gap: 40px;
+        &:has(+ .topnav__open[aria-expanded='true']) {
+          opacity: 1;
+          pointer-events: all;
+        }
       }
     }
 
-    .topnav__item {
+    .topnav__open,
+    .topnav__close {
+      display: none;
+
+      @media (width < calc(600 / 16 * 1rem)) {
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    .topnav__open {
+      &[aria-expanded='true'] {
+        & + .topnav__menu {
+          translate: 0 0;
+
+          @media (prefers-reduced-motion) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .topnav__open-icon {
+    }
+
+    .topnav__menu {
+      @media (width < calc(600 / 16 * 1rem)) {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 10;
+        background-color: var(--color-topnav-menu-bg);
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 12px 12px var(--color-topnav-menu-shadow);
+        translate: 0 -120%;
+
+        &.animating {
+          transition: translate 250ms ease-in-out;
+
+          @media (prefers-reduced-motion) {
+            transition-property: opacity;
+          }
+        }
+
+        @media (prefers-reduced-motion) {
+          translate: 0;
+          opacity: 0;
+        }
+      }
+    }
+
+    .topnav__close {
+      position: absolute;
+      top: 12px;
+      right: 24px;
+    }
+
+    .topnav__links {
+      display: flex;
+      gap: 40px;
+
+      @media (width < calc(600 / 16 * 1rem)) {
+        flex-direction: column;
+        align-items: center;
+        padding-block: 120px;
+      }
+    }
+
+    .topnav__item:first-child {
+      display: none;
+
+      @media (width < calc(600 / 16 * 1rem)) {
+        display: revert;
+      }
     }
 
     .topnav__link {
+      position: relative;
       text-transform: uppercase;
       font-size: var(--font-size-topnav);
       font-weight: 700;
       letter-spacing: 0.05em;
       color: var(--color-text-light);
+      line-height: 1;
 
-      position: relative;
+      @media (width < calc(600 / 16 * 1rem)) {
+        text-transform: revert;
+      }
 
       &::after {
         content: '';
@@ -641,6 +743,7 @@
       clip-path: none;
       clip: auto;
       overflow: visible;
+      z-index: 10;
     }
   }
 
