@@ -47,6 +47,7 @@
     --font-size-h3: var(--fs-24);
     --font-size-button: var(--fs-18);
     --font-size-quote: var(--fs-24);
+    --font-size-form: var(--fs-18);
 
     @media (width >= calc(600 / 16 * 1rem)) {
       --font-size-topnav: var(--fs-16);
@@ -90,6 +91,7 @@
     --color-button-tertiary-bg: var(--c-white);
     --color-button-tertiary-bg-hover: var(--c-teal);
     --color-button-tertiary-text: var(--c-gray-dark);
+    --color-form-input-bg: var(--c-white);
     --color-fullwidth-bg: var(--c-magenta);
     --color-cta-gradient1: var(--c-gray-dark);
     --color-cta-gradient2: var(--c-purple);
@@ -290,6 +292,37 @@
       &:hover {
         background-color: var(--color-button-tertiary-bg-hover);
       }
+    }
+  }
+
+  .form {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .form__label,
+    .form__text {
+      font-size: var(--font-size-form);
+      line-height: 1;
+    }
+
+    .form__label {
+      display: inline-block;
+      font-weight: 700;
+      flex: 100%;
+      text-align: left;
+    }
+
+    .form__text {
+      flex: 3;
+      background: var(--color-form-input-bg);
+      padding: 8px 20px;
+      border-radius: 5px;
+    }
+
+    .form__button {
+      flex: 1;
+      cursor: pointer;
     }
   }
 

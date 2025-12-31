@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="/style.css" />
     <script src="https://cdn.jsdelivr.net/gh/rick-liruixin/body-scroll-lock-upgrade@v1.1.0/lib/index.umd.js"></script>
 
-    <script src="https://unpkg.com/tabbable/dist/index.umd.js"></script>
-    <script src="https://unpkg.com/focus-trap/dist/focus-trap.umd.js"></script>
-
     <script src="/script.js" defer></script>
     <link
       rel="icon"
@@ -30,7 +27,7 @@
     <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <a class="visually-hidden skip" href="#main"
+    <a id="skip-header-link" class="visually-hidden skip" href="#main"
       >Skip to main content</a
     >
     <header class="topnav">
@@ -249,10 +246,27 @@
             Get started with Mythos today
           </h2>
           <p class="fullwidth__description large">
-            Find the next undiscovered unicorn with a free 14-day
-            trial.
+            Contact us to find the next undiscovered unicorn.
           </p>
-          <a href="#" class="button tertiary">Free trial</a>
+          <form action="" method="post" class="form">
+            <label class="form__label" for="txtEmail"
+              >Email address</label
+            >
+            <input
+              class="form__text"
+              type="email"
+              name="email"
+              id="txtEmail"
+              placeholder="test@test.com"
+              required
+            />
+            <button
+              type="submit"
+              class="button tertiary form__button"
+            >
+              Contact
+            </button>
+          </form>
         </div>
       </section>
     </main>

@@ -3,17 +3,15 @@ const footer = document.getElementById('footer');
 const btnOpen = document.getElementById('btnOpen');
 const btnClose = document.getElementById('btnClose');
 const menuTopNav = document.getElementById('menuTopNav');
-const breakpoint = window.matchMedia(
-  '(width < calc(600 / 16 * 1rem))'
-);
+const breakpoint = window.matchMedia('(width < 600px)');
 
-// const trap = focusTrap.createFocusTrap(menuTopNav, {
-//   onDeactivate: () => {
-//     closeMobileMenu();
-//   },
-//   clickOutsideDeactivates: true,
-//   escapeDeactivates: true,
-// });
+const inertable = [
+  main,
+  footer,
+  btnOpen,
+  document.querySelector('.topnav__homelink'),
+  document.querySelector('#skip-header-link'),
+];
 
 btnOpen.addEventListener('click', openMobileMenu);
 btnClose.addEventListener('click', closeMobileMenu);
@@ -21,23 +19,19 @@ breakpoint.addEventListener('change', setupTopNav);
 
 function openMobileMenu() {
   btnOpen.setAttribute('aria-expanded', 'true');
-  menuTopNav.removeAttribute('inert');
-  main.setAttribute('inert', '');
-  footer.setAttribute('inert', '');
   animateMenu();
+  menuTopNav.removeAttribute('inert');
+  setInertAll(true);
   bodyScrollLockUpgrade.disableBodyScroll(menuTopNav);
-  // trap.activate();
   btnClose.focus();
 }
 
 function closeMobileMenu() {
   btnOpen.setAttribute('aria-expanded', 'false');
-  menuTopNav.setAttribute('inert', '');
-  main.removeAttribute('inert');
-  footer.removeAttribute('inert');
   animateMenu();
+  menuTopNav.setAttribute('inert', '');
+  setInertAll(false);
   bodyScrollLockUpgrade.enableBodyScroll(menuTopNav);
-  // trap.deactivate();
   btnOpen.focus();
 }
 
@@ -58,6 +52,15 @@ function setupTopNav() {
     closeMobileMenu();
     menuTopNav.removeAttribute('inert');
   }
+}
+
+function setInertAll(state) {
+  inertable.forEach((el) => {
+    if (!el) return;
+    state
+      ? el.setAttribute('inert', '')
+      : el.removeAttribute('inert');
+  });
 }
 
 setupTopNav();
