@@ -60,6 +60,7 @@
   /* Colours */
   :root {
     --c-white: hsl(0, 0%, 100%);
+    --c-white-opaque: hsl(0, 0%, 100%, 50%);
     --c-gray-dark: hsl(233, 14%, 25%);
     --c-gray-dark-40: hsl(233, 14%, 25%, 40%);
     --c-purple: hsl(232, 58%, 55%);
@@ -620,35 +621,92 @@
   }
 
   .testimonial {
+    --color-bg: var(--color-main-bg);
+    --color-text: var(--color-text-dark);
+    --color-icon: var(--c-teal);
+
+    &.dark {
+      --color-bg: var(--c-purple);
+      --color-text: var(--color-text-light);
+      --color-icon: var(--c-white-opaque);
+    }
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+
     .testimonial__wrapper {
     }
 
     .testimonial__figure {
       width: min(100%, calc(800 / 16 * 1rem));
       margin-inline: auto;
+
+      @media (width >= calc(1000 / 16 * 1rem)) {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-areas:
+          'l-quote quote r-quote'
+          '. author .';
+      }
+
+      /* gap: 40px; */
     }
 
-    .testimonial__quotemark {
+    .testimonial__icon {
       width: calc(52 / 16 * 1rem);
       margin-block-end: 20px;
 
       @media (width >= calc(600 / 16 * 1rem)) {
         width: calc(78 / 16 * 1rem);
-        margin-block-end: 30px;
+      }
+
+      &:first-child {
+        @media (width >= calc(1000 / 16 * 1rem)) {
+          grid-area: l-quote;
+          justify-self: end;
+          align-self: start;
+          margin-inline-end: 40px;
+        }
+      }
+
+      &:last-child {
+        rotate: 180deg;
+
+        @media (width >= calc(1000 / 16 * 1rem)) {
+          grid-area: r-quote;
+          justify-self: start;
+          align-self: end;
+          margin-inline-start: 40px;
+        }
+
+        @media (width < calc(1000 / 16 * 1rem)) {
+          display: none;
+        }
       }
     }
 
-    .testimonial__quote {
+    .testimonial__icon-path {
+      fill: var(--color-icon);
+    }
+
+    .testimonial__quote-text {
+      grid-area: quote;
       font-size: var(--font-size-quote);
       font-weight: 700;
-      margin-block-end: 30px;
+      margin-block: 20px 30px;
 
       @media (width >= calc(600 / 16 * 1rem)) {
         margin-block-end: 40px;
       }
+
+      @media (width >= calc(1000 / 16 * 1rem)) {
+        margin-block-start: 40px;
+      }
     }
 
     .testimonial__author-wrapper {
+      grid-area: author;
       display: flex;
       flex-direction: column;
       /* gap between rows, gap between columns */
