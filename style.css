@@ -375,9 +375,6 @@
       }
     }
 
-    .topnav__homelink {
-    }
-
     .topnav__logo {
       width: calc(70 / 16 * 1rem);
 
@@ -423,9 +420,6 @@
           }
         }
       }
-    }
-
-    .topnav__open-icon {
     }
 
     .topnav__menu {
@@ -687,9 +681,6 @@
       }
     }
 
-    .alt-features__text {
-    }
-
     .alt-features__title {
       line-height: 1;
       margin-block-end: 10px;
@@ -700,9 +691,6 @@
       display: block;
       text-transform: uppercase;
       margin-block-end: 10px;
-    }
-
-    .alt-features__description {
     }
   }
 
@@ -719,9 +707,6 @@
 
     background-color: var(--color-bg);
     color: var(--color-text);
-
-    .testimonial__wrapper {
-    }
 
     .testimonial__figure {
       width: min(100%, calc(800 / 16 * 1rem));
@@ -820,9 +805,6 @@
   }
 
   .blog {
-    .blog__wrapper {
-    }
-
     .blog__title {
       margin-block-end: 40px;
       text-align: center;
@@ -891,9 +873,6 @@
       }
     }
 
-    .blog__post-description {
-    }
-
     .blog__post-meta {
       display: flex;
       justify-content: space-between;
@@ -905,9 +884,6 @@
 
     .blog__post-datetime {
       text-transform: uppercase;
-    }
-
-    .blog__post-readtime {
     }
   }
 
