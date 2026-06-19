@@ -6,7 +6,7 @@
 
 ## Description
 
-A generic magazine-style web page with multiple sections (e.g. hero, testimonial, contact, footer, etc). Built with accessibility in the forefront and very responsive to different viewports.
+A generic magazine-style web page with multiple sections (e.g. hero, testimonial, contact, footer, etc). Built with accessibility at the forefront and very responsive to different viewports.
 
 The final webpage is available via the link below.
 
@@ -24,7 +24,7 @@ I would thoroughly recommend any web developer to check out this fun course that
 
 Here are some of the things I took away from this course:
 
-- Putting accessibility near the forefront when deciding on a webpage's structure
+- Putting accessibility at the forefront when building the markup
 - CSS Layers!
 - Firefox's excellent dev tools
 - How to do a hamburger menu without repeating markup between desktop and mobile
@@ -32,4 +32,4 @@ Here are some of the things I took away from this course:
 - This cool thing with achieving a wavy line at the bottom of a section
 - Using Figma!
 - Employing a BEM-ish strategy for class names
-- And a plethora of other small but useful things (e.g. pseudo elements, lots of stuff with CSS grid, etc)
+- And a plethora of other small but useful things (e.g. pseudo elements, css nesting, media queries with an interesting px/rem approach, lots of stuff with CSS grid, etc)
