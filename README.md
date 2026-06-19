@@ -12,8 +12,6 @@ The final webpage is available via the link below.
 
 https://ssb-responsive-website.netlify.app/
 
-<!-- <img width="100%" src="/img/mythos-mobile.png" alt="Screenshot of different sections of website on mobile" style="display: block; line-height: 1; max-width: 400px;" /> -->
-
 ## Background
 
 This webpage was built while following along to Jessica Chan's course on how to [Build a Responsive Website](https://coder-coder.com/responsive/). It provided the starter files, Figma designs, and the videos that guide and instruct learners while coding along.
@@ -24,7 +22,7 @@ I would thoroughly recommend any web developer to check out this fun course that
 
 Here are some of the things I took away from this course:
 
-- Putting accessibility at the forefront when building the markup
+- Putting accessibility at the forefront when structuring the HTML
 - CSS Layers!
 - Firefox's excellent dev tools
 - How to do a hamburger menu without repeating markup between desktop and mobile
